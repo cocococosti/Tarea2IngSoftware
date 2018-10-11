@@ -11,4 +11,8 @@ import datetime
 class Pension():
     
     def calcularSemanas(self, dia, mes, anio):
-        pass
+        hoy = datetime.date.today()
+        fechaTrabajo = datetime.date(anio, mes, dia)
+        dias = (hoy-fechaTrabajo).days
+        semanas = dias/7
+        return round(semanas)
