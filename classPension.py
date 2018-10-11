@@ -17,6 +17,7 @@ class Pension():
         fechaTrabajo = datetime.date(anio, mes, dia)
         dias = (hoy-fechaTrabajo).days
         semanas = dias/7
+        # Redondear semanas
         return round(semanas)
     
     def esPensionado (self, genero, dia, mes, anio, edad, cond):
