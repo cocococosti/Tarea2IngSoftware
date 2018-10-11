@@ -7,6 +7,7 @@ Creado el 10 oct. 2018
 '''
 
 import datetime
+from _datetime import date
 
 class Pension():
     
@@ -16,14 +17,26 @@ class Pension():
         fechaTrabajo = datetime.date(anio, mes, dia)
         dias = (hoy-fechaTrabajo).days
         semanas = dias/7
-        # Redondear
+        # Redondear semanas
         return round(semanas)
     
     def esPensionado (self, genero, dia, mes, anio, edad, cond):
         
         if (isinstance(dia, float) or isinstance(mes, float) or isinstance(anio, float) or isinstance(edad, float)):
             raise ValueError("Error. No pueden ser numeros decimales")
+        if (dia <= 0 or mes <= 0 or anio <= 0 or edad <= 0):
+            raise ValueError("Error. No pueden ser numeros negativos o cero")
+        if (dia > 31 or mes > 12 or anio > 2018):
+            raise ValueError("Error. Valores invalidos para una fecha.")
+        if (genero != "M" and genero != "F"):
+            raise ValueError("Error. El genero solo puede ser M o F.")
+        if ((datetime.date.today()-datetime.date(anio, mes, dia)).days<0):
+            raise Exception("Error. La fecha no puede ser futura.")
         
+        mayorEdad = datetime.date.today().year - edad + 18
+        if (anio < mayorEdad):
+            raise Exception("Error. La fecha inicio de trabajo debe ser posterior a haber cumplido 18 años.")
+            
         semanas = self.calcularSemanas(dia, mes, anio)
         
         if (cond == True):
@@ -39,9 +52,7 @@ class Pension():
                 edad = edad + 5
             else:
                 pass        
-        
-        
-        
+           
         if (genero == "M"):
             if (edad < 60):
                 return False 
@@ -52,3 +63,25 @@ class Pension():
             return True
         else:
             return False
+
+if __name__ == '__main__':
+    pension = Pension()
+    edad = int(input("Introduzca edad "))
+    dia = int(input("Introudzca dia de incio de trabajo "))
+    mes = int(input("Introudzca mes de incio de trabajo "))
+    anio = int(input("Introudzca anio de incio de trabajo "))
+    genero = input("Introudzca genero (F/M) ")
+    cond = input("¿Trabajo en condiciones insalubres?(y/n) ")
+    if (cond == "y"):
+        insa = True
+    else:
+        insa = False
+    
+    jubilado = pension.esPensionado(genero, dia, mes, anio, edad, insa)
+    
+    if (jubilado):
+        print("La persona cumple los requisitos para recibir una pension.")
+    else:
+        print("La persona no cumple los requisitos para recibir una pension.")
+
+    
