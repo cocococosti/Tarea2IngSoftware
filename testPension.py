@@ -61,6 +61,8 @@ class testPension(unittest.TestCase):
 #   Prueba 13
     def testTrabajoInsalubreNoAceptadoMujer(self):
         self.assertFalse(self.pension.esPensionado("F", 5, 5, 2016, 54, True), "La persona no cumple con los requisitos para el pago de pension")
-        
+    # Prueba 14
+    def testDecimales(self):
+        self.assertRaises(ValueError, self.pension.esPensionado, "F", 2.5, 5, 2017, 30, False)
         
                         
