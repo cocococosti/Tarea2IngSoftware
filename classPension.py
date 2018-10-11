@@ -76,12 +76,14 @@ if __name__ == '__main__':
         insa = True
     else:
         insa = False
-    
-    jubilado = pension.esPensionado(genero, dia, mes, anio, edad, insa)
-    
-    if (jubilado):
-        print("La persona cumple los requisitos para recibir una pension.")
-    else:
-        print("La persona no cumple los requisitos para recibir una pension.")
+    try:
+        jubilado = pension.esPensionado(genero, dia, mes, anio, edad, insa)
+        
+        if (jubilado):
+            print("La persona cumple los requisitos para recibir una pension.")
+        else:
+            print("La persona no cumple los requisitos para recibir una pension.")
+    except:
+        print("Valores invalidos. Intente de nuevo.")
 
     
