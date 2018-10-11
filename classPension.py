@@ -22,11 +22,12 @@ class Pension():
         
         if (isinstance(dia, float) or isinstance(mes, float) or isinstance(anio, float) or isinstance(edad, float)):
             raise ValueError("Error. No pueden ser numeros decimales")
-        
         if (dia <= 0 or mes <= 0 or anio <= 0 or edad <= 0):
             raise ValueError("Error. No pueden ser numeros negativos o cero")
         if (dia > 31 or mes > 12 or anio > 2018):
             raise ValueError("Error. Valores invalidos para una fecha.")
+        if (genero != "M" and genero != "F"):
+            raise ValueError("Error. El genero solo puede ser M o F.")
         
         semanas = self.calcularSemanas(dia, mes, anio)
         
