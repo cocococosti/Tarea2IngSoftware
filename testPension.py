@@ -64,5 +64,11 @@ class testPension(unittest.TestCase):
     # Prueba 14
     def testDecimales(self):
         self.assertRaises(ValueError, self.pension.esPensionado, "F", 2.5, 5, 2017, 30, False)
+    # Prueba 15
+    def testNegativos(self):
+        self.assertRaises(ValueError, self.pension.esPensionado, "F", 2, 5, 2017, -30, False)
+    # Prueba 16
+    def testCero(self):
+        self.assertRaises(ValueError, self.pension.esPensionado, "F", 0, 5, 2017, 30, False)
         
                         
