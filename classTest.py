@@ -45,6 +45,4 @@ class testPension(unittest.TestCase):
         self.assertTrue(self.pension.esPensionado("F", 5, 5, 1995, 60, True), "La persona cumple con los requisitos para el pago de pension")
 #    Prueba 8
     def testTrabajoInsalubreAceptadoMujer(self):
-        self.assertTrue(self.pension.esPensionado("F", 5, 5, 1995, 53, True), "La persona cumple con los requisitos para el pago de pension")
-        
-                        
+        self.assertTrue(self.pension.esPensionado("F", 5, 5, 1995, 53, True), "La persona cumple con los requisitos para el pago de pension")                        
