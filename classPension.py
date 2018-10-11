@@ -7,6 +7,7 @@ Creado el 10 oct. 2018
 '''
 
 import datetime
+from _datetime import date
 
 class Pension():
     
@@ -28,6 +29,9 @@ class Pension():
             raise ValueError("Error. Valores invalidos para una fecha.")
         if (genero != "M" and genero != "F"):
             raise ValueError("Error. El genero solo puede ser M o F.")
+        if ((datetime.date.today()-datetime.date(anio, mes, dia)).days<0):
+            raise Exception("Error. La fecha no puede ser futura.")
+            
         
         semanas = self.calcularSemanas(dia, mes, anio)
         
