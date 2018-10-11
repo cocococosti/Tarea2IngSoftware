@@ -16,10 +16,9 @@ class testPension(unittest.TestCase):
     
     def setUp(self):
         self.pension = Pension()
-        
+#    Prueba 0
     def testCalculoSemanas(self):
         self.assertEqual(self.pension.calcularSemanas(5, 4, 1990), 1488, "Se deben obtener 1488 semanas.")
-    
 #    Prueba 1  
     def testEdadAceptadaHombre(self):
         self.assertTrue(self.pension.esPensionado("M", 10, 10, 1997, 65, False), "La persona cumple con los requisitos para el pago de pension")
@@ -32,7 +31,6 @@ class testPension(unittest.TestCase):
 #    Prueba 4
     def testEdadNoAceptadaMujer(self):
         self.assertFalse(self.pension.esPensionado("F", 10, 10, 1997, 45, False), "La persona no cumple con los requisitos para el pago de pension")
-        
 #    Prueba 5
     def testSemanasIncompletasHombre(self):
         self.assertFalse(self.pension.esPensionado("M", 10, 10, 2005, 65, False), "La persona no cumple con los requisitos para el pago de pension")
@@ -61,32 +59,39 @@ class testPension(unittest.TestCase):
 #   Prueba 13
     def testTrabajoInsalubreNoAceptadoMujer(self):
         self.assertFalse(self.pension.esPensionado("F", 5, 5, 2016, 54, True), "La persona no cumple con los requisitos para el pago de pension")
-    # Prueba 14
+#    Prueba 14
+    def testFechaTrabajoHoy(self):
+        hoy = datetime.date.today()
+        self.assertFalse(self.pension.esPensionado("F", hoy.day, hoy.month, hoy.year, 60, False),"La persona no cumple con los requisitos para el pago de pension")
+#    Prueba 15
+    def testNingunValorCumpleReq(self):
+        self.assertFalse(self.pension.esPensionado("F", 2, 5, 2017, 30, False), "La persona no cumple con los requisitos para el pago de pension")
+#    Prueba 16
     def testDecimales(self):
         self.assertRaises(ValueError, self.pension.esPensionado, "F", 2.5, 5, 2017, 30, False)
-    # Prueba 15
+#    Prueba 17
     def testNegativos(self):
         self.assertRaises(ValueError, self.pension.esPensionado, "F", 2, 5, 2017, -30, False)
-    # Prueba 16
+#    Prueba 18
     def testCero(self):
         self.assertRaises(ValueError, self.pension.esPensionado, "F", 0, 5, 2017, 30, False)
-    # Prueba 17
+#    Prueba 19
     def testValorDia(self):
         self.assertRaises(ValueError, self.pension.esPensionado, "F", 32, 5, 2017, 30, False)
-    # Prueba 18
+#    Prueba 20
     def testValorMes(self):
         self.assertRaises(ValueError, self.pension.esPensionado, "F", 4, 17, 2017, 30, False)
-    # Prueba 19
+#    Prueba 21
     def testValorAnio(self):
         self.assertRaises(ValueError, self.pension.esPensionado, "F", 3, 5, 2020, 30, False)
-    # Prueba 20
+#    Prueba 22
     def testValorGenero(self):
         self.assertRaises(ValueError, self.pension.esPensionado, "G", 3, 5, 2018, 30, False)
-    # Prueba 21
+#    Prueba 23
     def testFechaFuturo(self):
         hoy = datetime.date.today()+datetime.timedelta(days=1)
         self.assertRaises(Exception, self.pension.esPensionado, "F", hoy.day, hoy.month, hoy.year, 60, False)
-    #Prueba 22
+#    Prueba 24
     def testFechaMayorEdad(self):
         self.assertRaises(Exception, self.pension.esPensionado, "F", 6, 5, 1970, 55, False)
                         

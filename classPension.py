@@ -36,7 +36,6 @@ class Pension():
         if (anio < mayorEdad):
             raise Exception("Error. La fecha inicio de trabajo debe ser posterior a haber cumplido 18 años.")
             
-        
         semanas = self.calcularSemanas(dia, mes, anio)
         
         if (cond == True):
@@ -52,9 +51,7 @@ class Pension():
                 edad = edad + 5
             else:
                 pass        
-        
-        
-        
+           
         if (genero == "M"):
             if (edad < 60):
                 return False 
@@ -66,6 +63,24 @@ class Pension():
         else:
             return False
 
-
+if __name__ == '__main__':
+    pension = Pension()
+    edad = int(input("Introduzca edad "))
+    dia = int(input("Introudzca dia de incio de trabajo "))
+    mes = int(input("Introudzca mes de incio de trabajo "))
+    anio = int(input("Introudzca anio de incio de trabajo "))
+    genero = input("Introudzca genero (F/M) ")
+    cond = input("¿Trabajo en condiciones insalubres?(y/n) ")
+    if (cond == "y"):
+        insa = True
+    else:
+        insa = False
+    
+    jubilado = pension.esPensionado(genero, dia, mes, anio, edad, insa)
+    
+    if (jubilado):
+        print("La persona cumple los requisitos para recibir una pension.")
+    else:
+        print("La persona no cumple los requisitos para recibir una pension.")
 
     
