@@ -70,5 +70,15 @@ class testPension(unittest.TestCase):
     # Prueba 16
     def testCero(self):
         self.assertRaises(ValueError, self.pension.esPensionado, "F", 0, 5, 2017, 30, False)
+    # Prueba 17
+    def testValorDia(self):
+        self.assertRaises(ValueError, self.pension.esPensionado, "F", 32, 5, 2017, 30, False)
+    # Prueba 18
+    def testValorMes(self):
+        self.assertRaises(ValueError, self.pension.esPensionado, "F", 4, 17, 2017, 30, False)
+    # Prueba 19
+    def testValorAnio(self):
+        self.assertRaises(ValueError, self.pension.esPensionado, "F", 3, 5, 2020, 30, False)
+    
         
                         
