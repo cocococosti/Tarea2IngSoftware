@@ -22,6 +22,23 @@ class Pension():
         
         semanas = self.calcularSemanas(dia, mes, anio)
         
+        
+        if (cond == True):
+            if (semanas >= 48 and semanas < 96):
+                edad = edad + 1
+            elif (semanas >= 95 and semanas < 144):
+                edad = edad + 2
+            elif (semanas >= 144 and semanas < 192):
+                edad = edad + 3
+            elif (semanas >= 192 and semanas < 240):
+                edad = edad + 5
+            elif (semanas >= 240):
+                edad = edad + 5
+            else:
+                pass        
+        
+        
+        
         if (genero == "M"):
             if (edad < 60):
                 return False 
