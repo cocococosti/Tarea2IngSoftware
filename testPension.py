@@ -79,6 +79,9 @@ class testPension(unittest.TestCase):
     # Prueba 19
     def testValorAnio(self):
         self.assertRaises(ValueError, self.pension.esPensionado, "F", 3, 5, 2020, 30, False)
+    # Prueba 20
+    def testValorGenero(self):
+        self.assertRaises(ValueError, self.pension.esPensionado, "G", 3, 5, 2018, 30, False)
     
         
                         
