@@ -17,7 +17,20 @@ class testPension(unittest.TestCase):
     def setUp(self):
         self.pension = Pension()
         
-    def testCalcularSemanas(self):
+    def testCalculoSemanas(self):
         self.assertEqual(self.pension.calcularSemanas(5, 4, 1990), 1488, "Se deben obtener 1488 semanas.")
+    
+#    Prueba 1  
+    def testEdadAceptadaHombre(self):
+        self.assertTrue(self.pension.esPensionado("M", 10, 10, 1997, 65, False), "La persona cumple con los requisitos para el pago de pension")
+#    Prueba 2
+    def testEdadAceptadaMujer(self):
+        self.assertTrue(self.pension.esPensionado("F", 10, 10, 1997, 60, False), "La persona cumple con los requisitos para el pago de pension")
+#    Prueba 3
+    def testEdadNoAceptadaHombre(self):
+        self.assertFalse(self.pension.esPensionado("M", 10, 10, 1997, 50, False), "La persona no cumple con los requisitos para el pago de pension")
+#    Prueba 4
+    def testEdadNoAceptadaMujer(self):
+        self.assertFalse(self.pension.esPensionado("F", 10, 10, 1997, 45, False), "La persona no cumple con los requisitos para el pago de pension")
 
     
