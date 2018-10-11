@@ -31,6 +31,10 @@ class Pension():
             raise ValueError("Error. El genero solo puede ser M o F.")
         if ((datetime.date.today()-datetime.date(anio, mes, dia)).days<0):
             raise Exception("Error. La fecha no puede ser futura.")
+        
+        mayorEdad = datetime.date.today().year - edad + 18
+        if (anio < mayorEdad):
+            raise Exception("Error. La fecha inicio de trabajo debe ser posterior a haber cumplido 18 años.")
             
         
         semanas = self.calcularSemanas(dia, mes, anio)
@@ -61,3 +65,7 @@ class Pension():
             return True
         else:
             return False
+
+
+
+    
