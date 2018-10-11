@@ -25,6 +25,8 @@ class Pension():
         
         if (dia <= 0 or mes <= 0 or anio <= 0 or edad <= 0):
             raise ValueError("Error. No pueden ser numeros negativos o cero")
+        if (dia > 31 or mes > 12 or anio > 2018):
+            raise ValueError("Error. Valores invalidos para una fecha.")
         
         semanas = self.calcularSemanas(dia, mes, anio)
         
