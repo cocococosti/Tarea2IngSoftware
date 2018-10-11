@@ -20,8 +20,10 @@ class Pension():
     
     def esPensionado (self, genero, dia, mes, anio, edad, cond):
         
-        semanas = self.calcularSemanas(dia, mes, anio)
+        if (isinstance(dia, float) or isinstance(mes, float) or isinstance(anio, float) or isinstance(edad, float)):
+            raise ValueError("Error. No pueden ser numeros decimales")
         
+        semanas = self.calcularSemanas(dia, mes, anio)
         
         if (cond == True):
             if (semanas >= 48 and semanas < 96):
