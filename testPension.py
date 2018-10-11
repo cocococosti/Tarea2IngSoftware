@@ -86,6 +86,7 @@ class testPension(unittest.TestCase):
     def testFechaFuturo(self):
         hoy = datetime.date.today()+datetime.timedelta(days=1)
         self.assertRaises(Exception, self.pension.esPensionado, "F", hoy.day, hoy.month, hoy.year, 60, False)
-    
-        
+    #Prueba 22
+    def testFechaMayorEdad(self):
+        self.assertRaises(Exception, self.pension.esPensionado, "F", 6, 5, 1970, 55, False)
                         
